@@ -1,0 +1,71 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fb;
+}
+
+.dashboard-container {
+    padding: 30px;
+}
+
+.dashboard-title {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+.logout-btn {
+    float: right;
+    padding: 10px 18px;
+    border: none;
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.doctor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.doctor-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+}
+
+.doctor-card h2 {
+    color: #34495e;
+}
+
+.slot-container {
+    margin-top: 15px;
+}
+
+.slot-btn {
+    margin: 5px;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+}
+
+.available-slot {
+    background-color: #2ecc71;
+}
+
+.booked-slot {
+    background-color: #e74c3c;
+}
+
+.appointment-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+}
