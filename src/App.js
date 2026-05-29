@@ -1,10 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Login from "./pages/Login";
-import PatientDashboard from "./pages/PatientDashboard";
-import DoctorDashboard from "./pages/DoctorDashboard";
-import PatientSignup from "./pages/PatientSignup";
-import DoctorSignup from "./pages/DoctorSignup";
+import Login from "../src/pages/Login";
+import DoctorLogin from "../src/pages/DoctorLogin";
+import DoctorSignup from "../src/pages/DoctorSignup";
+import PatientDashboard from "../src/pages/PatientDashboard";
+import DoctorDashboard from "../src/pages/DoctorDashboard";
+import PatientSignup from "../src/pages/PatientSignup";
 
 function App() {
 
@@ -25,6 +26,16 @@ function App() {
         />
 
         <Route
+          path="/doctorLogin"
+          element={<DoctorLogin />}
+        />
+
+        <Route
+          path="/doctorSignup"
+          element={<DoctorSignup />}
+        />
+
+        <Route
           path="/patient-dashboard"
           element={<PatientDashboard />}
         />
@@ -35,13 +46,8 @@ function App() {
         />
 
         <Route
-          path="/patient-signup"
+          path="/patientSignup"
           element={<PatientSignup />}
-        />
-
-        <Route
-          path="/doctor-signup"
-          element={<DoctorSignup />}
         />
 
       </Routes>

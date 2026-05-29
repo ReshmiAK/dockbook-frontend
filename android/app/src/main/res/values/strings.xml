@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Doctor Appointment</string>
+    <string name="title_activity_main">Doctor Appointment</string>
+    <string name="package_name">com.docbook.app</string>
+    <string name="custom_url_scheme">com.docbook.app</string>
+</resources>

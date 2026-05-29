@@ -2,36 +2,50 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function PatientSignup() {
+function DoctorLogin() {
 
     const navigate = useNavigate();
 
-    const [patient, setPatient] = useState({
-        name: "",
-        phoneNumber: ""
-    });
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
-    const handleChange = (e) => {
+    const handleLogin = async () => {
 
-        setPatient({
-            ...patient,
-            [e.target.name]: e.target.value
-        });
-
-    };
-
-    const handleSignup = async () => {
+        const data = {
+            email: email,
+            password: password
+        };
 
         try {
 
-            await axios.post(
-                "http://10.0.2.2:8080/patientSignup",
-                patient
+            const response = await axios.post(
+                "http://localhost:8080/doctorLogin",
+                data
             );
 
-            alert("Patient Registered Successfully");
+            console.log(response.data);
 
-            navigate("/login");
+            if(response.data.message === "Login Success") {
+
+                localStorage.setItem(
+                    "userId",
+                    response.data.userId
+                );
+
+                localStorage.setItem(
+                    "doctorName",
+                    response.data.name
+                );
+
+                navigate("/doctor-dashboard");
+
+            }
+
+            else {
+
+                alert("Invalid Login");
+
+            }
 
         }
 
@@ -39,7 +53,7 @@ function PatientSignup() {
 
             console.log(error);
 
-            alert("Signup Failed");
+            alert("Login Failed");
 
         }
 
@@ -68,42 +82,43 @@ function PatientSignup() {
                     marginBottom: "25px",
                     color: "#2c3e50"
                 }}>
-                    Patient Signup
+                    Doctor Login
                 </h1>
 
                 <input
-                    type="text"
-                    name="name"
-                    placeholder="Enter Name"
-                    value={patient.name}
-                    onChange={handleChange}
+                    type="email"
+                    placeholder="Enter Email"
+                    value={email}
+                    onChange={(e) =>
+                        setEmail(e.target.value)
+                    }
                     style={inputStyle}
                 />
 
                 <input
-                    type="text"
-                    name="phoneNumber"
-                    placeholder="Enter Phone Number"
-                    value={patient.phoneNumber}
-                    onChange={handleChange}
+                    type="password"
+                    placeholder="Enter Password"
+                    value={password}
+                    onChange={(e) =>
+                        setPassword(e.target.value)
+                    }
                     style={inputStyle}
                 />
 
                 <button
-                    onClick={handleSignup}
+                    onClick={handleLogin}
                     style={{
                         width: "100%",
                         padding: "12px",
-                        backgroundColor: "#3498db",
+                        backgroundColor: "#8e44ad",
                         color: "white",
                         border: "none",
                         borderRadius: "8px",
                         fontSize: "16px",
-                        cursor: "pointer",
-                        marginTop: "10px"
+                        cursor: "pointer"
                     }}
                 >
-                    Signup
+                    Login
                 </button>
 
             </div>
@@ -113,6 +128,7 @@ function PatientSignup() {
     );
 
 }
+
 const inputStyle = {
     width: "100%",
     padding: "12px",
@@ -122,4 +138,4 @@ const inputStyle = {
     boxSizing: "border-box"
 };
 
-export default PatientSignup;
+export default DoctorLogin;
